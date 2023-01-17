@@ -14,6 +14,11 @@ if(EXISTS "${LOC_PATH}")
                         "remove CMakeCache.txt and CMakeFiles.")
 endif()
 
+# --- auto-ignore build directory
+if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
+  file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
+endif()
+
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(libs)
