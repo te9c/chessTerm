@@ -1,6 +1,6 @@
-<h1 align="center"> ♟ ChessCMD ♟ </h1>
+<h1 align="center"> ♟ ChessTerm ♟ </h1>
 
-### Terminal-focused GUI to play chess in bash
+### Lightweight TUI to play chess in bash
 
 Main features:
 
