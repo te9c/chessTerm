@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 
 project(
-    chessCMD
+    chessTerm
     VERSION 0.1
     DESCRIPTION "chess TUI on c++"
     LANGUAGES CXX)
