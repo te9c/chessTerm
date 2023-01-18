@@ -13,6 +13,8 @@ class Chessboard{
 
         Chessboard();
 
+        std::vector<std::vector<int>> GetBoard(){ return board; }
+
         bool Move(int Xfrom,int Yfrom, int Xto, int Yto); // true - Move valid; false Move isnt valid
 
         void ImportFEN(std::string FEN);
