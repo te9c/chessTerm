@@ -2,12 +2,17 @@ project(ChessApp)
 
 set(CHESS_LOGIC_SOURCES
     chessboard.cpp
-    chessboard.hpp)
+    chessboard.hpp
+    )
 
 set(SCREEN_LOGIC_SOURCES
-    screen.cpp)
+    screen.cpp
+    screen.hpp
+    )
 
 set(CORE_SOURCES
+    session.cpp
+    session.hpp
     # tbd
     )
 
