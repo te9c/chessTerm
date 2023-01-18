@@ -22,4 +22,5 @@ class Chessboard{
         std::string GetFEN();
 
         bool IsValidPosition();
-}
+
+};
