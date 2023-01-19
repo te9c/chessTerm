@@ -5,17 +5,17 @@
 
 class Chessboard{
     private:
-        std::vector<std::vector<int>> board;
+        std::vector<std::vector<char>> board;
 
-        void IsValidMove(int Xfrom,int Yfrom,int Xto,int Yto);
+        void IsValidMove(std::string notation);
     public:
         Chessboard(std::string FEN);
 
         Chessboard();
 
-        std::vector<std::vector<int>> GetBoard(){ return board; }
+        std::vector<std::vector<char>> GetBoard(){ return board; }
 
-        bool Move(int Xfrom,int Yfrom, int Xto, int Yto); // true - Move valid; false Move isnt valid
+        bool Move(std::string notation); // true - Move valid; false Move isnt valid
 
         void ImportFEN(std::string FEN);
 
