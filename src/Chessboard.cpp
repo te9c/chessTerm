@@ -1,4 +1,5 @@
 #include "Chessboard.hpp"
+#include "Misc.cpp"
 
 #include <string>
 #include <vector>
