@@ -20,7 +20,6 @@ TEST(NotationTest, HandlesInvalidInput){
 }
 
 TEST(NotationTest, HandlesUppercaseInput){
-    GTEST_SKIP() << "Skipping uppercase input test. Not implemented yet";
     EXPECT_TRUE(Misc::IsValidNotation("A2B5"));
     EXPECT_FALSE(Misc::IsValidNotation("G6I4"));
     EXPECT_FALSE(Misc::IsValidNotation("H9A2"));
