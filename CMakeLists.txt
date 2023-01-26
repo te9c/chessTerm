@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
+enable_testing()
 
 project(
     chessTerm
@@ -23,12 +24,10 @@ if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
   file(WRITE ${PROJECT_BINARY_DIR}/.gitignore "*")
 endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
-        ${PROJECT_BINARY_DIR}/bin
-    )
-
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(src)
 add_subdirectory(tests)
-add_subdirectory(libs)
