@@ -11,4 +11,6 @@ class Misc{
 
         static bool IsValidNotation(std::string notation) {
             return IsValidLongNotation(notation) || IsValidShortNotation(notation);}
+
+        static bool IsValidFen(std::string FEN);
 };

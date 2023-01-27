@@ -1,8 +1,10 @@
 #include "Misc.hpp"
 
+#include <cstdlib>
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <array>
 
 bool Misc::IsValidLongNotation(std::string notation){
 
@@ -19,4 +21,7 @@ bool Misc::IsValidLongNotation(std::string notation){
         return false;
 
     return true;
+}
+
+bool Misc::IsValidFen(std::string FEN){
 }
