@@ -14,12 +14,12 @@ FetchContent_MakeAvailable(googletest)
 ####################
 
 #################### Tests
-add_executable(NotationTest NotationTest.cpp)
+add_executable(main main.cpp)
 
-set_target_properties(NotationTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/TestsBin")
+set_target_properties(main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/TestsBin")
 
-target_link_libraries(NotationTest PRIVATE
+target_link_libraries(main PRIVATE
     appLogic
     gtest_main)
 
-add_test(NAME NotationTest COMMAND NotationTest)
+add_test(NAME main COMMAND main)
