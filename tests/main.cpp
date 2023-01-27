@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "NotationTest.cpp"
+#include "MiscTest.cpp"
 
 int main (int argc, char *argv[])
 {

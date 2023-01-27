@@ -1,0 +1,55 @@
+#include "gtest/gtest.h"
+#include<gtest/gtest.h>
+#include"Misc.hpp"
+
+TEST(NotationTest, HandlesValidInput){
+    EXPECT_TRUE(Misc::IsValidNotation("a2b6"));
+}
+
+TEST(NotationTest, HandlesValidBorderInput){
+    EXPECT_TRUE(Misc::IsValidNotation("a1b8"));
+    EXPECT_TRUE(Misc::IsValidNotation("h1a8"));
+    EXPECT_TRUE(Misc::IsValidNotation("a5h4"));
+}
+
+TEST(NotationTest, HandlesInvalidInput){
+    EXPECT_FALSE(Misc::IsValidNotation(""));
+    EXPECT_FALSE(Misc::IsValidNotation("a4b65"));
+    EXPECT_FALSE(Misc::IsValidNotation("a2 b5"));
+    EXPECT_FALSE(Misc::IsValidNotation("a0b2"));
+    EXPECT_FALSE(Misc::IsValidNotation("i2g5"));
+}
+
+TEST(NotationTest, HandlesUppercaseInput){
+    EXPECT_TRUE(Misc::IsValidNotation("A2B5"));
+    EXPECT_FALSE(Misc::IsValidNotation("G6I4"));
+    EXPECT_FALSE(Misc::IsValidNotation("H9A2"));
+}
+
+
+TEST(FenTest, HandlesValidInput){
+    GTEST_SKIP() << "not implemented";
+    EXPECT_TRUE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
+    EXPECT_TRUE(Misc::IsValidFen("8/8/8/8/8/8/8/8 w - - 0 1"));
+
+    EXPECT_TRUE(Misc::IsValidFen("8/1Kkr1n2/Q3n1P1/2K1qN2/1n6/4B1N1/3B4/3K1Q2 w - - 0 1"));
+
+    EXPECT_TRUE(Misc::IsValidFen("8/8/8/K1k5/8/r7/8/8 w - - 15 9"));
+    EXPECT_TRUE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w Kk - 0 1"));
+}
+
+TEST(FenTest,HandlesInvalidInput){
+    GTEST_SKIP() << "not implemented";
+
+    EXPECT_FALSE(Misc::IsValidFen(""));
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
+
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/ppp2pppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR l KQkq - 0 1"));
+
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQRkq - 0 1"));
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0"));
+
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR/RNBQKBNR w KQkq - 0 1"));
+    EXPECT_FALSE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP w KQkq - 0 1"));
+}
