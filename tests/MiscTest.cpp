@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-#include<gtest/gtest.h>
-#include"Misc.hpp"
+#include <gtest/gtest.h>
+#include "Misc.hpp"
 
 TEST(NotationTest, HandlesValidInput){
     EXPECT_TRUE(Misc::IsValidNotation("a2b6"));

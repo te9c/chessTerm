@@ -68,9 +68,8 @@ bool Misc::IsValidFen(std::string FEN){
                         if (std::find(std::begin(pieces),std::end(pieces),*iter) == std::end(pieces))
                             return false;
                         counterPieces++;
-                    }else{
+                    }else
                         counterPieces += num;
-                    }
 
                     if (counterPieces > 8)
                         return false;
@@ -82,53 +81,47 @@ bool Misc::IsValidFen(std::string FEN){
                     if (!isMoveOrderInit)
                         return false;
                     counterFields++;
-                    iter++;
                 }
-                else if ((*iter == 'b' || *iter == 'w') && !isMoveOrderInit){
+                else if ((*iter == 'b' || *iter == 'w') && !isMoveOrderInit)
                     isMoveOrderInit = true;
-                    iter++;
-                }
                 else
                     return false;
+
+                iter++;
                 break;
             case 3:
                 if (*iter == ' '){
                     if (!isCastlingBlank && countq == 0 && countk == 0 && countQ == 0 && countK == 0)
                         return false;
                     counterFields++;
-                    iter++;
                 }
                 else if (*iter == '-' && !isCastlingBlank && countq == 0 && countk == 0 && countK == 0 && countQ == 0){
                     isCastlingBlank = true;
-                    iter++;
                 }
                 else if (*iter == 'K' && !isCastlingBlank){
                     countK++;
                     if (countK > 1)
                         return false;
-                    iter++;
                 }
                 else if (*iter == 'Q' && !isCastlingBlank){
                     countQ++;
                     if (countQ > 1)
                         return false;
-                    iter++;
                 }
                 else if (*iter == 'q' && !isCastlingBlank){
                     countq++;
                     if (countq > 1)
                         return false;
-                    iter++;
                 }
                 else if (*iter == 'k' && !isCastlingBlank){
                     countk++;
-                    if (countk > 1 )
+                    if (countk > 1)
                         return false;
-                    iter++;
                 }
-                else {
+                else
                     return false;
-                }
+
+                iter++;
                 break;
             case 4:
                 if (*iter == ' '){
@@ -136,38 +129,31 @@ bool Misc::IsValidFen(std::string FEN){
                         return false;
                     if (isEnPassantBlank && (enPassantNum || enPassantChar))
                         return false;
+
                     if (isEnPassantBlank || (enPassantNum && enPassantChar)){
                         counterFields++;
-                        iter++;
-                        halfMoveFieldStart = std::distance(FEN.begin(),iter);
-                    }else {
-                        return false;
+                        halfMoveFieldStart = std::distance(FEN.begin(),iter+1);
                     }
-                    break;
+                    else
+                        return false;
                 }
-                else if (*iter == '-' && !isEnPassantBlank && !enPassantNum && !enPassantChar){
+                else if (*iter == '-' && !isEnPassantBlank && !enPassantNum && !enPassantChar)
                     isEnPassantBlank = true;
-                    iter++;
-                }
-                else if (!enPassantChar && *iter - 'a' >= 0  && *iter -'a' <= 7){
+                else if (!enPassantChar && *iter - 'a' >= 0  && *iter -'a' <= 7)
                     enPassantChar = true;
-                    iter++;
-                }
                 else if (!enPassantNum && (std::atoi(&*iter) == 3 || std::atoi(&*iter) == 6))
-                {
                     enPassantNum = true;
-                    iter++;
-                }
                 else
                     return false;
+
+                iter++;
                 break;
             case 5:
                 if(*iter == ' '){
                     std::string halfMoveStr = FEN.substr(halfMoveFieldStart,std::distance(FEN.begin(),iter)-halfMoveFieldStart);
 
                     try{
-                        if (std::stoi(halfMoveStr) == 0 && halfMoveStr.size() != 1)
-                            return false;
+                        std::stoi(halfMoveStr);
                     }
                     catch (std::invalid_argument){
                         return false;
@@ -176,13 +162,11 @@ bool Misc::IsValidFen(std::string FEN){
                         return false;
                     }
 
-                    if (halfMoveStr[0] != '0' && halfMoveStr.size() == 1)
-                        return false;
-                    iter++;
                     fullMoveFieldStart = std::distance(FEN.begin(),iter);
                     counterFields++;
-                }else
-                    iter++;
+                }
+
+                iter++;
                 break;
             case 6:
                 iter++;
