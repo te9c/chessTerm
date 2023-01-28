@@ -132,7 +132,9 @@ bool Misc::IsValidFen(std::string FEN){
                 break;
             case 4:
                 if (*iter == ' '){
-                    if (!isEnPassantBlank && !enPassantNum && !enPassantNum)
+                    if (!isEnPassantBlank && !enPassantNum && !enPassantChar)
+                        return false;
+                    if (isEnPassantBlank && (enPassantNum || enPassantChar))
                         return false;
                     if (isEnPassantBlank || (enPassantNum && enPassantChar)){
                         counterFields++;
@@ -189,6 +191,7 @@ bool Misc::IsValidFen(std::string FEN){
     }
     if (counterFields != 6)
         return false;
+
     try{
         if (std::stoi(FEN.substr(fullMoveFieldStart,FEN.size() - fullMoveFieldStart)) == '0')
             return false;
