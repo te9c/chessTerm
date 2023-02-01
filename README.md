@@ -6,7 +6,7 @@ Main features:
 
 - Lightweight
 - FEN input/output
-- Analysis board with Stockfish integration (maybe)
+- Analysis board with Stockfish integration
 - Chess board editor
 - Chess variants
 
