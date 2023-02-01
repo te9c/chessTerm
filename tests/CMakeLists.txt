@@ -1,7 +1,7 @@
 project(tests)
 
 include_directories(${${CMAKE_PROJECT_NAME}_SOURCE_DIR}/src/)
-set(CMAKE_CURRENT_BINARY_DIR )
+set(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/TestsBin)
 
 #################### Google test installation
 include(FetchContent)
@@ -14,12 +14,17 @@ FetchContent_MakeAvailable(googletest)
 ####################
 
 #################### Tests
-add_executable(main main.cpp)
 
-set_target_properties(main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/TestsBin")
+set(LIBS appLogic gtest_main)
 
-target_link_libraries(main PRIVATE
-    appLogic
-    gtest_main)
+add_executable(MiscTest MiscTest.cpp)
+add_executable(ChessboardTest ChessboardTest.cpp)
 
-add_test(NAME main COMMAND main)
+set_target_properties(MiscTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/TestsBin")
+set_target_properties(ChessboardTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/TestsBin")
+
+target_link_libraries(MiscTest PRIVATE ${LIBS})
+target_link_libraries(ChessboardTest PRIVATE ${LIBS})
+
+add_test(NAME MiscTest COMMAND MiscTest)
+add_test(NAME ChessboardTest COMMAND ChessboardTest)
