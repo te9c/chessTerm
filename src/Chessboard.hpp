@@ -5,7 +5,19 @@
 
 class Chessboard{
     private:
-        std::vector<std::vector<char>> board;
+        char** board = new char*[8];
+
+        int moveCounter;
+        int fiftyRuleCounter;
+
+        bool isWhiteToPlay;
+
+        bool isPossibleCastleQ; // queen side white
+        bool isPossibleCastleK; // king side white
+        bool isPossibleCastleq; // queen side black
+        bool isPossibleCastlek; // king side black
+
+        std::string enPassantTarget;
 
         void IsValidMove(std::string notation);
     public:
@@ -13,7 +25,7 @@ class Chessboard{
 
         Chessboard();
 
-        std::vector<std::vector<char>> GetBoard(){ return board; }
+        char** GetBoard(){ return board; }
 
         bool Move(std::string notation); // true - Move valid; false Move isnt valid
 
