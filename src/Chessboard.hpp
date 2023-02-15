@@ -2,10 +2,11 @@
 
 #include <vector>
 #include <string>
+#include <array>
 
 class Chessboard{
     private:
-        char** board = new char*[8];
+        std::array<std::array<char,8>,8> board;
 
         int moveCounter;
         int fiftyRuleCounter;
@@ -25,7 +26,7 @@ class Chessboard{
 
         Chessboard();
 
-        char** GetBoard(){ return board; }
+        std::array<std::array<char,8>,8> GetBoard(){ return board; }
 
         bool Move(std::string notation); // true - Move valid; false Move isnt valid
 

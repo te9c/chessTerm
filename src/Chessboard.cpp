@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <array>
 
 const std::string startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
@@ -15,13 +16,10 @@ const std::string clearFEN = "8/8/8/8/8/8/8/8 w - - 0 1";
 Chessboard::Chessboard() : Chessboard(std::string(clearFEN)){}
 
 Chessboard::Chessboard(std::string FEN){
-    for (int i = 0; i < 8; i++)
-        Chessboard::board[i] = new char[8];
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = ' ';
-        }
-    }
+    std::array<char,8> emptyArr;
+    emptyArr.fill(' ');
+
+    Chessboard::board.fill(emptyArr);
 
     ImportFEN(FEN);
 }
