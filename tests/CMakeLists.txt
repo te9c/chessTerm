@@ -15,7 +15,7 @@ FetchContent_MakeAvailable(googletest)
 
 #################### Tests
 
-set(LIBS appLogic gtest_main)
+set(LIBS appLogic gtest_main gmock_main)
 
 add_executable(MiscTest MiscTest.cpp)
 add_executable(ChessboardTest ChessboardTest.cpp)
