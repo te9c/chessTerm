@@ -63,6 +63,43 @@ void Chessboard::ImportFEN(std::string FEN){
     iter++;
     if (*iter != '-'){
         Chessboard::enPassantTarget = std::string({*iter,*(iter+1)});
+
+        int row = std::atoi(&enPassantTarget[1]) - 1;
+        int column = enPassantTarget[0] - 'a';
+
+        if (row != 2 && row != 5)
+            enPassantTarget = "";
+        else{
+            if (Chessboard::board[row][column] == 'p'){
+                if (column == 0){
+                    if (Chessboard::board[row][column++] != 'P')
+                        enPassantTarget = "";
+                }
+                else if (column == 7){
+                    if (Chessboard::board[row][column--] != 'P')
+                        enPassantTarget = "";
+                }
+                else {
+                    if (Chessboard::board[row][column++] != 'P' && Chessboard::board[row][column--] != 'P')
+                        enPassantTarget = "";
+                }
+            }else if (Chessboard::board[row][column] == 'P'){
+                if (column == 0){
+                    if (Chessboard::board[row][column++] != 'p')
+                        enPassantTarget = "";
+                }
+                else if (column == 7){
+                    if (Chessboard::board[row][column--] != 'p')
+                        enPassantTarget = "";
+                }
+                else {
+                    if (Chessboard::board[row][column++] != 'p' && Chessboard::board[row][column--] != 'p')
+                        enPassantTarget = "";
+                }
+            }else{
+                enPassantTarget = "";
+            }
+        }
         iter += 3;
     }else
         iter += 2;
