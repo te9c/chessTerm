@@ -141,7 +141,7 @@ bool Misc::IsValidFen(std::string FEN){
                     isEnPassantBlank = true;
                 else if (!enPassantChar && *iter - 'a' >= 0  && *iter -'a' <= 7)
                     enPassantChar = true;
-                else if (!enPassantNum && (std::atoi(&*iter) == 3 || std::atoi(&*iter) == 6))
+                else if (!enPassantNum && (std::atoi(&*iter) <= 8 && std::atoi(&*iter) > 0))
                     enPassantNum = true;
                 else
                     return false;

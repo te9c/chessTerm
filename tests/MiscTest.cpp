@@ -38,6 +38,7 @@ TEST(FenTest, HandlesValidInput){
     EXPECT_TRUE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w Kk - 0 1"));
 
     EXPECT_TRUE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w Kk - 267 153"));
+    EXPECT_TRUE(Misc::IsValidFen("rnbqkb1r/pppp1p1p/5n2/3P2p1/4p3/3BPN2/PPP2PPP/RNBQK2R w KQkq d1 0 6"));
 }
 
 TEST(FenTest,HandlesInvalidInput){
