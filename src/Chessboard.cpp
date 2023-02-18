@@ -62,7 +62,7 @@ void Chessboard::ImportFEN(std::string FEN){
     }
     iter++;
     if (*iter != '-'){
-        Chessboard::enPassantTarget = *iter + *(iter+1);
+        Chessboard::enPassantTarget = std::string({*iter,*(iter+1)});
         iter += 3;
     }else
         iter += 2;
@@ -72,4 +72,61 @@ void Chessboard::ImportFEN(std::string FEN){
     Chessboard::moveCounter = atoi(&*iter);
     if (moveCounter == 0)
         moveCounter = 1;
+}
+
+std::string Chessboard::GetFEN(){
+    std::string FEN;
+
+    for (int i = 7; i >= 0; i--) {
+        int counter = 0;
+        for (auto y : board[i]) {
+            if (y == ' ')
+            {
+                counter++;
+            }
+            else
+            {
+                if (counter != 0)
+                    FEN += std::to_string(counter);
+                counter = 0;
+                FEN += y;
+            }
+        }
+        if (counter != 0)
+            FEN += std::to_string(counter);
+        FEN += '/';
+    }
+    FEN.pop_back();
+
+    FEN += ' ';
+    if (isWhiteToPlay)
+        FEN += 'w';
+    else
+        FEN += 'b';
+
+    FEN += ' ';
+    if (isPossibleCastleK)
+        FEN += 'K';
+    if (isPossibleCastleQ)
+        FEN += 'Q';
+    if (isPossibleCastlek)
+        FEN += 'k';
+    if (isPossibleCastleq)
+        FEN += 'q';
+
+    if (FEN[FEN.size()-1] == ' ')
+        FEN += '-';
+
+    FEN += ' ';
+    if (enPassantTarget != "")
+        FEN += enPassantTarget;
+    else
+        FEN += '-';
+
+    FEN += ' ';
+    FEN += std::to_string(fiftyRuleCounter);
+    FEN += ' ';
+    FEN += std::to_string(moveCounter);
+
+    return FEN;
 }

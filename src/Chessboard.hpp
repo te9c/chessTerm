@@ -8,31 +8,32 @@ class Chessboard{
     private:
         std::array<std::array<char,8>,8> board;
 
+        bool isCheckMate = false;
+
         int moveCounter;
         int fiftyRuleCounter;
 
         bool isWhiteToPlay;
 
-        bool isPossibleCastleQ; // queen side white
-        bool isPossibleCastleK; // king side white
-        bool isPossibleCastleq; // queen side black
-        bool isPossibleCastlek; // king side black
+        bool isPossibleCastleQ = false; // queen side white
+        bool isPossibleCastleK = false; // king side white
+        bool isPossibleCastleq = false; // queen side black
+        bool isPossibleCastlek = false; // king side black
 
-        std::string enPassantTarget;
+        std::string enPassantTarget = "";
 
-        void IsValidMove(std::string notation);
     public:
         Chessboard(std::string FEN);
 
         Chessboard();
 
-        std::array<std::array<char,8>,8> GetBoard(){ return board; }
+        std::array<std::array<char,8>,8> GetBoard() { return board; }
 
         bool Move(std::string notation); // true - Move valid; false Move isnt valid
 
         void ImportFEN(std::string FEN);
 
-        bool IsCheckMate();
+        bool GetIsCheckMate() { return isCheckMate; };
 
         std::string GetFEN();
 
