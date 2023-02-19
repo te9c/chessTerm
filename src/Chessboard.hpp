@@ -8,8 +8,6 @@ class Chessboard{
     private:
         std::array<std::array<char,8>,8> board;
 
-        bool isCheckMate = false;
-
         int moveCounter;
         int fiftyRuleCounter;
 
@@ -33,7 +31,7 @@ class Chessboard{
 
         void ImportFEN(std::string FEN);
 
-        bool GetIsCheckMate() { return isCheckMate; };
+        bool IsCheckMate();
 
         std::string GetFEN();
 

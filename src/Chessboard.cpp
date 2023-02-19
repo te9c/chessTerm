@@ -167,3 +167,29 @@ std::string Chessboard::GetFEN(){
 
     return FEN;
 }
+
+bool Chessboard::IsValidPosition(){
+    if (Chessboard::IsCheckMate())
+        return false;
+
+    int whiteKingCounter = 0;
+    int blackKingCounter = 0;
+
+    for(auto x : board){
+        for(auto y : x){
+            if (y == 'k')
+                whiteKingCounter++;
+            if (y == 'K')
+                blackKingCounter++;
+        }
+    }
+    if (whiteKingCounter != 1 || blackKingCounter != 1)
+        return false;
+
+    return true;
+}
+
+// TODO: Implement checkmate check function
+bool Chessboard::IsCheckMate(){
+    return false;
+}
