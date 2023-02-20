@@ -9,7 +9,7 @@
 
 bool Misc::IsValidLongNotation(std::string notation){
 
-    if (notation.size() != 4)
+    if (notation.size() != 4  && notation.size() != 5)
         return false;
 
     // transform to lowercase
@@ -21,11 +21,20 @@ bool Misc::IsValidLongNotation(std::string notation){
     if ((notation[1] < 49 || notation[1] > 56) || (notation[3] < 49 || notation[3] > 56))
         return false;
 
+    if (notation.size() == 5){
+        auto piece = std::find(Misc::pieces.begin(),Misc::pieces.end(),notation[4]);
+        if (piece == Misc::pieces.end())
+            return false;
+        if (*piece == 'k' || *piece == 'K')
+            return false;
+        if (*piece == 'p' || *piece == 'P')
+            return false;
+    }
+
     return true;
 }
 
 bool Misc::IsValidFen(std::string FEN){
-    std::array pieces = {'r','n','b','q','k','p','R','N','B','Q','K','P'};
     int counterPieces = 0; // should be 8 in each block
     int counterBlocks = 1; // should be 8 blocks
     int counterFields = 1; // should be 6 fields
@@ -65,7 +74,7 @@ bool Misc::IsValidFen(std::string FEN){
                 else {
                     int num = std::atoi(&*iter);
                     if (num == 0){
-                        if (std::find(std::begin(pieces),std::end(pieces),*iter) == std::end(pieces))
+                        if (std::find(std::begin(Misc::pieces),std::end(Misc::pieces),*iter) == std::end(Misc::pieces))
                             return false;
                         counterPieces++;
                     }else
