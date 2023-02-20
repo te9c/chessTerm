@@ -4,6 +4,10 @@
 
 class Misc{
     public:
+        inline static const std::string startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+
+        inline static const std::string clearFEN = "8/8/8/8/8/8/8/8 w - - 0 1";
+
         static bool IsValidLongNotation(std::string notation);
 
         // Not implemented
