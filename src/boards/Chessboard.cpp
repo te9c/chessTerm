@@ -179,6 +179,6 @@ bool Chessboard::IsValidPosition(){
     return true;
 }
 
-bool Chessboard::Move(INotation &notation){
-    return false;
+bool Chessboard::Move(ChessNotation &notation){
+    return true;
 }

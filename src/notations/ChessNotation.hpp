@@ -1,14 +1,11 @@
 #pragma once
 
-#include "INotation.hpp"
+#include "Notation.hpp"
 #include <string>
 
-class ChessNotation : INotation {
+class ChessNotation : public Notation {
     public:
-        ChessNotation(std::string stringNotation) {
-            this->stringNotation = stringNotation;};
-
-        std::string GetStringRepresentation() {return stringNotation;};
+        ChessNotation(std::string stringNotation) : Notation(stringNotation){};
 
         bool IsValidLongNotation();
 
@@ -16,6 +13,4 @@ class ChessNotation : INotation {
 
         bool IsValid() {
             return IsValidLongNotation() || IsValidShortNotation();};
-    private:
-        std::string stringNotation;
 };
