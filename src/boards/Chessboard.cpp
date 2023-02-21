@@ -185,5 +185,10 @@ bool Chessboard::Move(Notation &notation){
     if (!pointerCast)
         throw std::invalid_argument("");
 
-    return Move(*pointerCast);
+    return Chessboard::Move(*pointerCast);
+}
+
+// TODO: implement Move function
+bool Chessboard::Move(ChessNotation &notation){
+    return false;
 }
