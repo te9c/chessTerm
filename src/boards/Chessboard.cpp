@@ -2,6 +2,7 @@
 #include "../Misc.cpp"
 
 #include <cctype>
+#include <cstddef>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -179,6 +180,10 @@ bool Chessboard::IsValidPosition(){
     return true;
 }
 
-bool Chessboard::Move(ChessNotation &notation){
-    return true;
+bool Chessboard::Move(Notation &notation){
+    ChessNotation *pointerCast = dynamic_cast<ChessNotation *>(&notation);
+    if (!pointerCast)
+        throw std::invalid_argument("");
+
+    return Move(*pointerCast);
 }
