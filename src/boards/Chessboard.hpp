@@ -1,12 +1,16 @@
 #pragma once
 
+#include "IBoard.hpp"
+#include "../notations/ChessNotation.hpp"
+#include "../Misc.hpp"
+
 #include <vector>
 #include <string>
 #include <array>
 
-class Chessboard{
+class Chessboard : IBoard {
     private:
-        std::array<std::array<char,8>,8> board;
+        std::vector<std::vector<char>> boardArray;
 
         int moveCounter;
         int fiftyRuleCounter;
@@ -19,22 +23,22 @@ class Chessboard{
         bool isPossibleCastlek = false; // king side black
 
         std::string enPassantTarget = "";
-
     public:
         Chessboard(std::string FEN);
+        Chessboard() : Chessboard(std::string(Misc::clearFEN)){};
 
-        Chessboard();
+        std::vector<std::vector<char>> GetBoardArray() { return boardArray; }
 
-        std::array<std::array<char,8>,8> GetBoard() { return board; }
+        bool Move(INotation &notation);
 
-        bool Move(std::string notation); // true - Move valid; false Move isnt valid
+        bool IsValidPosition();
+
+        int GetMoveCounter() {return moveCounter;};
 
         void ImportFEN(std::string FEN);
 
         bool IsCheckMate();
 
         std::string GetFEN();
-
-        bool IsValidPosition();
 
 };

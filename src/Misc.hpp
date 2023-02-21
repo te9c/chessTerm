@@ -11,13 +11,5 @@ class Misc{
 
         inline static const std::string clearFEN = "8/8/8/8/8/8/8/8 w - - 0 1";
 
-        static bool IsValidLongNotation(std::string notation);
-
-        // Not implemented
-        static bool IsValidShortNotation(std::string notation) {return false;}
-
-        static bool IsValidNotation(std::string notation) {
-            return IsValidLongNotation(notation) || IsValidShortNotation(notation);}
-
         static bool IsValidFen(std::string FEN);
 };

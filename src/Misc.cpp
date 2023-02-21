@@ -7,33 +7,6 @@
 #include <cctype>
 #include <array>
 
-bool Misc::IsValidLongNotation(std::string notation){
-
-    if (notation.size() != 4  && notation.size() != 5)
-        return false;
-
-    // transform to lowercase
-    std::transform(notation.begin(), notation.end(), notation.begin(),
-    [](unsigned char c){ return std::tolower(c); });
-
-    if ((notation[0] - 'a' < 0 || notation[0] - 'a' > 7) || (notation[2] - 'a' < 0 || notation[2] - 'a' > 7))
-        return false;
-    if ((notation[1] < 49 || notation[1] > 56) || (notation[3] < 49 || notation[3] > 56))
-        return false;
-
-    if (notation.size() == 5){
-        auto piece = std::find(Misc::pieces.begin(),Misc::pieces.end(),notation[4]);
-        if (piece == Misc::pieces.end())
-            return false;
-        if (*piece == 'k' || *piece == 'K')
-            return false;
-        if (*piece == 'p' || *piece == 'P')
-            return false;
-    }
-
-    return true;
-}
-
 bool Misc::IsValidFen(std::string FEN){
     int counterPieces = 0; // should be 8 in each block
     int counterBlocks = 1; // should be 8 blocks

@@ -1,5 +1,5 @@
 #include "Chessboard.hpp"
-#include "Misc.cpp"
+#include "../Misc.cpp"
 
 #include <cctype>
 #include <stdexcept>
@@ -8,13 +8,8 @@
 #include <iostream>
 #include <array>
 
-Chessboard::Chessboard() : Chessboard(std::string(Misc::clearFEN)){}
-
 Chessboard::Chessboard(std::string FEN){
-    std::array<char,8> emptyArr;
-    emptyArr.fill(' ');
-
-    Chessboard::board.fill(emptyArr);
+    Chessboard::boardArray = std::vector<std::vector<char>>(8,std::vector<char>(8,' '));
 
     ImportFEN(FEN);
 }
@@ -34,7 +29,7 @@ void Chessboard::ImportFEN(std::string FEN){
             int skip = *iter - '0';
             col += skip;
         } else {
-            Chessboard::board[row][col] = *iter;
+            Chessboard::boardArray[row][col] = *iter;
             col++;
         }
         iter++;
@@ -65,30 +60,30 @@ void Chessboard::ImportFEN(std::string FEN){
         if (row != 2 && row != 5)
             enPassantTarget = "";
         else{
-            if (Chessboard::board[row][column] == 'p'){
+            if (Chessboard::boardArray[row][column] == 'p'){
                 if (column == 0){
-                    if (Chessboard::board[row][column++] != 'P')
+                    if (Chessboard::boardArray[row][column++] != 'P')
                         enPassantTarget = "";
                 }
                 else if (column == 7){
-                    if (Chessboard::board[row][column--] != 'P')
+                    if (Chessboard::boardArray[row][column--] != 'P')
                         enPassantTarget = "";
                 }
                 else {
-                    if (Chessboard::board[row][column++] != 'P' && Chessboard::board[row][column--] != 'P')
+                    if (Chessboard::boardArray[row][column++] != 'P' && Chessboard::boardArray[row][column--] != 'P')
                         enPassantTarget = "";
                 }
-            }else if (Chessboard::board[row][column] == 'P'){
+            }else if (Chessboard::boardArray[row][column] == 'P'){
                 if (column == 0){
-                    if (Chessboard::board[row][column++] != 'p')
+                    if (Chessboard::boardArray[row][column++] != 'p')
                         enPassantTarget = "";
                 }
                 else if (column == 7){
-                    if (Chessboard::board[row][column--] != 'p')
+                    if (Chessboard::boardArray[row][column--] != 'p')
                         enPassantTarget = "";
                 }
                 else {
-                    if (Chessboard::board[row][column++] != 'p' && Chessboard::board[row][column--] != 'p')
+                    if (Chessboard::boardArray[row][column++] != 'p' && Chessboard::boardArray[row][column--] != 'p')
                         enPassantTarget = "";
                 }
             }else{
@@ -111,7 +106,7 @@ std::string Chessboard::GetFEN(){
 
     for (int i = 7; i >= 0; i--) {
         int counter = 0;
-        for (auto y : board[i]) {
+        for (auto y : boardArray[i]) {
             if (y == ' ')
             {
                 counter++;
@@ -164,13 +159,13 @@ std::string Chessboard::GetFEN(){
 }
 
 bool Chessboard::IsValidPosition(){
-    if (Chessboard::IsCheckMate())
-        return false;
+    // if (Chessboard::IsCheckMate())
+    //     return false;
 
     int whiteKingCounter = 0;
     int blackKingCounter = 0;
 
-    for(auto x : board){
+    for(auto x : boardArray){
         for(auto y : x){
             if (y == 'k')
                 whiteKingCounter++;
@@ -184,7 +179,6 @@ bool Chessboard::IsValidPosition(){
     return true;
 }
 
-// TODO: Implement checkmate check function
-bool Chessboard::IsCheckMate(){
+bool Chessboard::Move(INotation &notation){
     return false;
 }

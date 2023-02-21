@@ -1,8 +1,13 @@
 project(ChessApp)
 
 set(CHESS_LOGIC_SOURCES
-    Chessboard.cpp
-    Chessboard.hpp
+    boards/IBoard.hpp
+    boards/Chessboard.cpp
+    boards/Chessboard.hpp
+
+    notations/INotation.hpp
+    notations/ChessNotation.hpp
+    notations/ChessNotation.cpp
     )
 
 set(SCREEN_LOGIC_SOURCES
@@ -13,7 +18,8 @@ set(SCREEN_LOGIC_SOURCES
 set(CORE_SOURCES
     Session.cpp
     Session.hpp
-    # tbd
+    Misc.hpp
+    Misc.cpp
     )
 
 set(LOGIC_SOURCES

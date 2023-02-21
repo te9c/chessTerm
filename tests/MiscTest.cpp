@@ -1,36 +1,6 @@
 #include <gtest/gtest.h>
 #include "Misc.hpp"
 
-TEST(NotationTest, HandlesValidInput){
-    EXPECT_TRUE(Misc::IsValidNotation("a2b6"));
-    EXPECT_TRUE(Misc::IsValidNotation("d7d8q"));
-    EXPECT_TRUE(Misc::IsValidNotation("a2b7N")); // Notation is valid but move isn't
-    EXPECT_TRUE(Misc::IsValidNotation("f2f1b"));
-}
-
-TEST(NotationTest, HandlesValidBorderInput){
-    EXPECT_TRUE(Misc::IsValidNotation("a1b8"));
-    EXPECT_TRUE(Misc::IsValidNotation("h1a8"));
-    EXPECT_TRUE(Misc::IsValidNotation("a5h4"));
-}
-
-TEST(NotationTest, HandlesInvalidInput){
-    EXPECT_FALSE(Misc::IsValidNotation(""));
-    EXPECT_FALSE(Misc::IsValidNotation("a4b65"));
-    EXPECT_FALSE(Misc::IsValidNotation("a2 b5"));
-    EXPECT_FALSE(Misc::IsValidNotation("a0b2"));
-    EXPECT_FALSE(Misc::IsValidNotation("i2g5"));
-
-    EXPECT_FALSE(Misc::IsValidNotation("a7a8k"));
-    EXPECT_FALSE(Misc::IsValidNotation("e3g4P"));
-}
-
-TEST(NotationTest, HandlesUppercaseInput){
-    EXPECT_TRUE(Misc::IsValidNotation("A2B5"));
-    EXPECT_FALSE(Misc::IsValidNotation("G6I4"));
-    EXPECT_FALSE(Misc::IsValidNotation("H9A2"));
-}
-
 
 TEST(FenTest, HandlesValidInput){
     EXPECT_TRUE(Misc::IsValidFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"));
