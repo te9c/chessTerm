@@ -1,17 +1,22 @@
 #pragma once
 
-#include "boards/Board.hpp"
+#include "boards/IBoard.hpp"
+#include <typeinfo>
 
 class Session{
     public:
-        Session(Board board) {
-            this->board = board;
+        ~Session(){
+            delete board;
         }
 
-        Board GetBoard() {
+        Session(IBoard board) {
+            this->board = &board;
+        }
+
+        IBoard *GetBoard() {
             return board;
         }
 
     private:
-        Board board;
+        IBoard* board;
 };

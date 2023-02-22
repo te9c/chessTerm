@@ -1,11 +1,11 @@
 project(ChessApp)
 
 set(CHESS_LOGIC_SOURCES
-    boards/Board.hpp
+    boards/IBoard.hpp
     boards/Chessboard.cpp
     boards/Chessboard.hpp
 
-    notations/Notation.hpp
+    notations/INotation.hpp
     notations/ChessNotation.hpp
     notations/ChessNotation.cpp
     )

@@ -180,7 +180,7 @@ bool Chessboard::IsValidPosition(){
     return true;
 }
 
-bool Chessboard::Move(Notation &notation){
+bool Chessboard::Move(INotation &notation){
     ChessNotation *pointerCast = dynamic_cast<ChessNotation *>(&notation);
     if (!pointerCast)
         throw std::invalid_argument("");

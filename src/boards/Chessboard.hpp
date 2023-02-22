@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Board.hpp"
+#include "IBoard.hpp"
 #include "../notations/ChessNotation.hpp"
 #include "../Misc.hpp"
 
@@ -8,8 +8,12 @@
 #include <string>
 #include <array>
 
-class Chessboard : public Board {
+class Chessboard : public IBoard {
     private:
+        std::vector<std::vector<char>> boardArray;
+
+        int moveCounter;
+
         int fiftyRuleCounter;
 
         bool isWhiteToPlay;
@@ -24,7 +28,11 @@ class Chessboard : public Board {
         Chessboard(std::string FEN);
         Chessboard() : Chessboard(std::string(Misc::clearFEN)){};
 
-        bool Move(Notation &notation);
+        std::vector<std::vector<char>> GetBoardArray() {
+            return boardArray;
+        }
+
+        bool Move(INotation &notation);
 
         bool Move(ChessNotation &notation);
 
@@ -36,4 +44,7 @@ class Chessboard : public Board {
 
         std::string GetFEN();
 
+        int GetMoveCounter() {
+            return moveCounter;
+        }
 };
