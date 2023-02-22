@@ -4,11 +4,16 @@
 class Notation{
     public:
         Notation(std::string stringNotation) {
-            this->stringNotation = stringNotation;}
+            this->stringNotation = stringNotation;
+        }
 
-        virtual std::string GetStringNotation() {return stringNotation;};
+        virtual std::string GetStringNotation() {
+            return stringNotation;
+        }
 
-        virtual bool IsValid() {return false; };
+        virtual bool IsValid() {
+            return false;
+        }
 
     protected:
         std::string stringNotation = "";

@@ -12,5 +12,6 @@ class ChessNotation : public Notation {
         bool IsValidShortNotation();
 
         bool IsValid() {
-            return IsValidLongNotation() || IsValidShortNotation();};
+            return IsValidLongNotation() || IsValidShortNotation();
+        }
 };
