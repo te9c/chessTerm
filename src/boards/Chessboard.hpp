@@ -32,9 +32,9 @@ class Chessboard : public IBoard {
             return boardArray;
         }
 
-        bool Move(INotation &notation);
+        bool Move(INotation *notation);
 
-        bool Move(ChessNotation &notation);
+        bool Move(ChessNotation notation);
 
         bool IsValidPosition();
 

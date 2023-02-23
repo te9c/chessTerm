@@ -3,6 +3,7 @@
 
 #include "boards/Chessboard.hpp"
 #include <array>
+#include <stdexcept>
 
 //Note that when you initialize array you have to mirror your board
 
@@ -52,4 +53,12 @@ TEST(ChessboardGetFen,StaticInput){
     EXPECT_EQ(cb3.GetFEN(),"r4r1k/1Rp3pp/1N1p4/n2Bpb2/3Pn3/2q4P/5PPN/R2Q2K1 w - - 0 30");
     EXPECT_EQ(cb4.GetFEN(),"1rb2k1r/R2nqpbp/3p1np1/1p1P4/2p1PP2/2N1B3/1PQNB1PP/5RK1 b - - 12 18");
     EXPECT_EQ(cb5.GetFEN(),"1rb2k1r/R2nqpbp/3p1np1/1p1P4/2p1PP2/2N1B3/1PQNB1PP/5RK1 b - - 12 18");
+}
+
+TEST(ChessboardMove,ExpectNullReference){
+    Chessboard cb(Misc::startFEN);
+    INotation *nullNotationPointer = new ChessNotation("a2b5");
+    nullNotationPointer = NULL;
+    EXPECT_THROW(cb.Move(nullNotationPointer), std::invalid_argument);
+    delete nullNotationPointer;
 }

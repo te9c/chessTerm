@@ -3,7 +3,7 @@
 #include <string>
 class INotation{
     public:
-        ~INotation() {}
+        virtual ~INotation() {}
 
         virtual std::string GetStringNotation() = 0;
 

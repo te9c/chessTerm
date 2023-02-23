@@ -180,15 +180,17 @@ bool Chessboard::IsValidPosition(){
     return true;
 }
 
-bool Chessboard::Move(INotation &notation){
-    ChessNotation *pointerCast = dynamic_cast<ChessNotation *>(&notation);
-    if (!pointerCast)
-        throw std::invalid_argument("");
+bool Chessboard::Move(INotation *notation){
+    if (!notation)
+        throw std::invalid_argument("NULL reference");
+    ChessNotation *chessNotationCast = dynamic_cast<ChessNotation *>(notation);
+    if (!chessNotationCast)
+        throw std::invalid_argument(std::string(typeid(notation).name()) + " is not type ChessNotation");
 
-    return Chessboard::Move(*pointerCast);
+    return Chessboard::Move(*chessNotationCast);
 }
 
 // TODO: implement Move function
-bool Chessboard::Move(ChessNotation &notation){
+bool Chessboard::Move(ChessNotation notation){
     return false;
 }

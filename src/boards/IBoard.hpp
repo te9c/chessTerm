@@ -9,7 +9,7 @@ class IBoard {
 
         virtual std::vector<std::vector<char>> GetBoardArray() = 0;
 
-        virtual bool Move(INotation &notation) = 0;
+        virtual bool Move(INotation *notation) = 0;
 
         virtual bool IsValidPosition() = 0;
 
