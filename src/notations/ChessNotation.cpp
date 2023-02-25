@@ -3,12 +3,31 @@
 #include "../Misc.hpp"
 #include <algorithm>
 
+
+ChessNotation::ChessNotation(std::string stringNotation)
+{
+    this->stringNotation = stringNotation;
+
+    if (ValidationOfShortNotation())
+    {
+        isValid = true;
+        isValidShortNotation = true;
+    }
+    if (ValidationOfLongNotation())
+    {
+        isValid = true;
+        isValidLongNotation = true;
+    }
+}
+
+
 // TODO: Implement short notations
-bool ChessNotation::IsValidShortNotation(){
+bool ChessNotation::ValidationOfShortNotation(){
     return false;
 }
 
-bool ChessNotation::IsValidLongNotation(){
+bool ChessNotation::ValidationOfLongNotation()
+{
     if (stringNotation.size() != 4  && stringNotation.size() != 5)
         return false;
     //
@@ -21,7 +40,10 @@ bool ChessNotation::IsValidLongNotation(){
     if ((stringNotation[1] < 49 || stringNotation[1] > 56) || (stringNotation[3] < 49 || stringNotation[3] > 56))
         return false;
 
-    if (stringNotation.size() == 5){
+    if (stringNotation.size() == 5)
+    {
+        isPromotion = true;
+
         auto piece = std::find(Misc::pieces.begin(),Misc::pieces.end(),stringNotation[4]);
         if (piece == Misc::pieces.end())
             return false;
