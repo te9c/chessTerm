@@ -3,7 +3,7 @@ enable_testing()
 
 project(
     chessTerm
-    VERSION 0.1
+    VERSION 0.1.0
     DESCRIPTION "chess TUI on c++"
     LANGUAGES CXX)
 
