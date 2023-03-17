@@ -34,14 +34,7 @@ set(CHESS_LOGIC_SOURCES
     notations/ChessNotation.cpp
     )
 
-set(SCREEN_LOGIC_SOURCES
-    Screen.cpp
-    Screen.hpp
-    )
-
 set(CORE_SOURCES
-    Session.cpp
-    Session.hpp
     Misc.hpp
     Misc.cpp
     )
@@ -49,7 +42,7 @@ set(CORE_SOURCES
 set(LOGIC_SOURCES
     ${CORE_SOURCES}
     ${CHESS_LOGIC_SOURCES}
-    ${SCREEN_LOGIC_SOURCES})
+    )
 
 add_library(appLogic STATIC ${LOGIC_SOURCES})
 
